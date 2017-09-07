@@ -2,11 +2,19 @@
 
 app.factory('text', function($http){
 
+  var success = function(response) {
+    console.log(response);
+  }
+  var error = function(error) {
+    console.error(error);
+  }
+
   var greeting = function(query) {
       var requestURL = CONFIG.contextURL + 'chat',
           data = {
             'query': query
           };
+          console.log(requestURL);
 
       return $http({
           url: requestURL,
@@ -16,10 +24,10 @@ app.factory('text', function($http){
               'Authorization': ''
           },
           data: data
-      });
+      }).then(success, error);
     };
 
     return {
-      greeting : greeting      
+      greeting : greeting
     }
 });
