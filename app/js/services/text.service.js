@@ -2,9 +2,7 @@
 
 app.factory('text', function($http){
 
-
   var greeting = function(query) {
-
       var requestURL = CONFIG.contextURL + 'chat',
           data = {
             'query': query
@@ -19,6 +17,9 @@ app.factory('text', function($http){
           },
           data: data
       });
+    };
 
-
+    return {
+      greeting : greeting      
+    }
 });
